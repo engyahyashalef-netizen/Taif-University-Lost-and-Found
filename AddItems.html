@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taif University Lost & Found - Add Item</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/logo.png" alt="Taif University Logo" width="50">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="LostItems.html">Lost Items</a></li>
+          <li class="nav-item"><a class="nav-link" href="FoundItems.html">Found Items</a></li>
+          <li class="nav-item"><a class="nav-link active" href="AddItems.html">Add Item</a></li>
+          <li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li>
+        </ul>
+        <form class="d-flex" role="search" action="search_results.html" method="get">
+          <input class="form-control me-2" type="search" name="q" placeholder="Search items…" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <a class="btn btn-link nav-link ms-4" href="SignIn.html">Sign In</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Add Item Section -->
+  <main class="container mt-5 pt-4">
+    <h2 class="text-center mb-4">Add Lost or Found Item</h2>
+
+    <!-- Alert placeholder -->
+    <div id="alert-placeholder"></div>
+
+    <!-- Tabs for Lost / Found -->
+    <ul class="nav nav-tabs justify-content-center" id="itemTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="lostTab" data-bs-toggle="tab" data-bs-target="#lostItem" type="button" role="tab">Lost Item</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="foundTab" data-bs-toggle="tab" data-bs-target="#foundItem" type="button" role="tab">Found Item</button>
+      </li>
+    </ul>
+
+    <div class="tab-content mt-3">
+      <!-- Lost Item Form -->
+      <div class="tab-pane fade show active" id="lostItem" role="tabpanel">
+        <form action="process_item.php" method="post" enctype="multipart/form-data"
+              class="p-3 border rounded bg-light">
+          <input type="hidden" name="type" value="lost">
+          <div class="mb-3">
+            <label for="item_name" class="form-label">Name of the Item</label>
+            <input id="item_name" name="item_name" type="text" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="item_photo" class="form-label">Photo of the Item (Optional)</label>
+            <input id="item_photo" name="item_photo" type="file" class="form-control" accept="image/*">
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Where did you lose it?</label>
+            <input id="location" name="location" type="text" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="datetime" class="form-label">Date & Time of Loss</label>
+            <input id="datetime" name="datetime" type="datetime-local" class="form-control" required>
+          </div>
+          <h5>Claim Verification Questions:</h5>
+          <div class="mb-3">
+            <label for="feature" class="form-label">What is a unique feature of the item?</label>
+            <input id="feature" name="feature" type="text" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="id_mark" class="form-label">Any identification mark on it?</label>
+            <input id="id_mark" name="id_mark" type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="prev_location" class="form-label">Where were you before losing the item?</label>
+            <input id="prev_location" name="prev_location" type="text" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Lost Item</button>
+        </form>
+      </div>
+
+      <!-- Found Item Form -->
+      <div class="tab-pane fade" id="foundItem" role="tabpanel">
+        <form action="process_item.php" method="post" enctype="multipart/form-data"
+              class="p-3 border rounded bg-light">
+          <input type="hidden" name="type" value="found">
+          <div class="mb-3">
+            <label for="item_name_f" class="form-label">Name of the Item</label>
+            <input id="item_name_f" name="item_name" type="text" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="item_photo_f" class="form-label">Photo of the Item (Optional)</label>
+            <input id="item_photo_f" name="item_photo" type="file" class="form-control" accept="image/*">
+          </div>
+          <div class="mb-3">
+            <label for="location_f" class="form-label">Where did you find it?</label>
+            <input id="location_f" name="location" type="text" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="datetime_f" class="form-label">Date & Time of Finding</label>
+            <input id="datetime_f" name="datetime" type="datetime-local" class="form-control" required>
+          </div>
+          <h5>Claim Verification Questions:</h5>
+          <div class="mb-3">
+            <label for="condition" class="form-label">What was the condition of the item?</label>
+            <input id="condition" name="condition" type="text" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="contact_info" class="form-label">Was there any contact information on it?</label>
+            <input id="contact_info" name="contact_info" type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="extra_details" class="form-label">Any additional details about where you found it?</label>
+            <input id="extra_details" name="extra_details" type="text" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-success">Submit Found Item</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white pt-4 pb-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 d-flex align-items-start">
+          <img src="img/TaifLogo.png" alt="Taif University Logo" class="img-fluid me-3" style="max-width:80px;">
+          <div>
+            <h5>Contact Us</h5>
+            <p>Phone: +966 12 123 4567</p>
+            <p>Email: info@tu.edu.sa</p>
+            <p>Address: P.O. Box 888, Taif 21944, Saudi Arabia</p>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="mb-2">
+            <a href="https://www.linkedin.com/school/taif-university/" target="_blank" class="text-white mx-2">
+              <i class="fab fa-linkedin fa-lg"></i>
+            </a>
+            <a href="https://www.facebook.com/TaifUniversity" target="_blank" class="text-white mx-2">
+              <i class="fab fa-facebook fa-lg"></i>
+            </a>
+            <a href="https://www.instagram.com/taif_university" target="_blank" class="text-white mx-2">
+              <i class="fab fa-instagram fa-lg"></i>
+            </a>
+          </div>
+          <p class="mb-0">&copy; 2025 Taif University. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // On page load, read ?success and ?error from URL and show a Bootstrap alert
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      if (!params.has('success')) return;
+
+      const success = params.get('success');
+      let msg = '', cls = '';
+      if (success === '1') {
+        msg = 'Your item has been submitted successfully!';
+        cls = 'alert-success';
+      } else {
+        const err = params.get('error');
+        if (err === 'db') {
+          msg = 'Sorry, there was a server error. Please try again later.';
+        } else {
+          msg = 'Please fill out the form correctly and try again.';
+        }
+        cls = 'alert-danger';
+      }
+
+      const alertHtml = `
+        <div class="alert ${cls} text-center" role="alert">
+          ${msg}
+        </div>`;
+      document.getElementById('alert-placeholder').innerHTML = alertHtml;
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/63d76f3459.js" crossorigin="anonymous"></script>
+</body>
+</html>
+

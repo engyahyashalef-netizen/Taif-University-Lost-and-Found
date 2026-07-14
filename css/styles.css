@@ -1,0 +1,84 @@
+/* Slide-in Navbar */
+
+/* Bouncing Sign In Button */
+.btn-bounce {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-5px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* Scrolling Text Animation */
+.scrolling-text {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.scrolling-text p {
+    display: inline-block;
+    animation: scroll-left 10s linear infinite;
+}
+
+@keyframes scroll-left {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* Draggable Image */
+.draggable {
+    cursor: move;
+}
+
+/* Border styling for Sign In and Sign Up Boxes */
+.sign-in-sign-up-box {
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Styling */
+footer {
+    background-color: #343a40;
+    color: white;
+}
+
+footer .container {
+    padding: 20px;
+}
+
+footer .social-icons i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+footer .social-icons a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Responsive Image */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Make the navbar text more readable */
+.navbar-nav .nav-link {
+    font-weight: bold;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
